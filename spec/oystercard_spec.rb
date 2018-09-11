@@ -20,4 +20,11 @@ describe Oystercard do
       expect{subject.top_up(1)}.to raise_error "You have exceeded your £#{maximum_balance} limit!"
     end
   end
+
+  describe '#pay_fare' do
+      it { should respond_to(:pay_fare).with(1).argument }
+  end
+    it "deducts money from the balance" do
+      expect(subject.pay_fare(5)).to eq -5
+  end
 end

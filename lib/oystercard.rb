@@ -12,4 +12,8 @@ class Oystercard
     fail "You have exceeded your £#{LIMIT} limit!" if @balance + money > LIMIT
     @balance = @balance + money
   end
+
+  def pay_fare(price)
+    @balance = @balance - price
+  end
 end
