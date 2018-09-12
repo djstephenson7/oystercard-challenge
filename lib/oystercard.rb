@@ -1,8 +1,8 @@
-
 class Oystercard
   attr_reader :balance
 
   LIMIT = 90
+  MINIMUM = 2
 
   def initialize
     @balance = 0
@@ -10,15 +10,16 @@ class Oystercard
   end
 
   def top_up(money)
-    fail "You have exceeded your £#{LIMIT} limit!" if @balance + money > LIMIT
-    @balance = @balance + money
+    raise "You have exceeded your £#{LIMIT} limit!" if @balance + money > LIMIT
+    @balance += money
   end
 
   def pay_fare(price)
-    @balance = @balance - price
+    @balance -= price
   end
 
   def touch_in
+    raise "Insufficient balance!" if MINIMUM > @balance
     @journey = true
   end
 
