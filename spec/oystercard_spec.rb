@@ -53,6 +53,7 @@ describe Oystercard do
     it 'ends the journey' do
       subject.top_up(5)
       subject.touch_in
+      expect { subject.touch_out }.to change{ subject.balance }.by(-Oystercard::MINIMUM)
       subject.touch_out
       expect(subject).not_to be_in_journey
     end
