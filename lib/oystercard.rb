@@ -21,8 +21,8 @@ class Oystercard
   end
 
   def touch_in(station)
-    @journey_hash[:entry_station] = station
     raise "Insufficient balance!" if MINIMUM > @balance
+    @journey_hash[:entry_station] = station
     @journey = true
   end
 
